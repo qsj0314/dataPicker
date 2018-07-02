@@ -1,9 +1,9 @@
 <template>
-  <div class="sj-model">
+  <div class="sj-model" v-show="show">
     <div class="sj-data-picker">
       <div class="sj-data-picker-header">
-        <span>取消</span>
-        <span>确定{{dataChecked}}</span>
+        <span @click="cancel()">取消</span>
+        <span @click="success(dataValue)">确定{{dataChecked}}</span>
       </div>
       <div class="sj-data-picker-body" ref="dataContent">
         <div class="sj-data-picker-year" ref="year" @touchstart = "touchstart($event, $refs.year, 'year')" @touchmove = "touchmove($event, $refs.year, 'year', yearList)" @touchend = "touchend($event, $refs.year, 'year', yearList)">
@@ -35,7 +35,8 @@ export default {
       minDistance: {},
       maxDistance: 0,
       dataValue: {},
-      dataChecked: ''
+      dataChecked: '',
+      show: false
     };
   },
   mounted () {
@@ -142,6 +143,12 @@ export default {
       else{
         return false
       }
+    },
+    cancel () {
+
+    },
+    success () {
+
     }
   }
 };

@@ -32,20 +32,22 @@ export default {
           content:'这里是消息弹出内容',
           confirm:'确定按钮',
           className:'pop-custom',
-          successBtn: this.success,
-          cancelBtn: this.cancel
+          // successBtn: this.success,
+          // cancelBtn: this.cancel
       })
     },
-    success () {
-      console.log('++++++++++++')
+    success (val) {
+      console.log('++++++++++++', val)
     },
-    cancel () {
+    cancel (val) {
       console.log('----------------')
     },
     showDataPicker(){
       this.$dataPicker({
         yearList: [2012, 2013],
-        dataChecked: ''
+        dataChecked: '',
+        cancel: this.cancel,
+        success: this.success
       })
     }
   }

@@ -11,6 +11,17 @@ let dataPicker = (options = {}) => {
   }
   document.body.appendChild(instance.$el);
   Object.assign(instance.$data, options);
+  instance.show = true;
+  let cancel = options.cancel;
+  instance.cancel = () => {
+      instance.show = false;
+      cancel()
+  }
+  let success = options.success;
+  instance.success = (val) => {
+      instance.show = false;
+      success(val)
+  }
 }
 export default function (Vue) {
   Vue.prototype.$dataPicker = dataPicker
